@@ -1,4 +1,4 @@
-body {
+body { /* some minor css style as we can see for the container, bg color, styliong the button, and using a hover over the table*/
     background-color: #5c656f;
 }
 
@@ -12,7 +12,7 @@ body {
 
 .btn-primary {
     background-color: #007bff;
-    border-color: #007bff;
+    border-color: #a6b4c3;
 }
 
 .btn-primary:hover {

@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-
-    <style>
+   <!--  Some minor styling for the table, added a hover feature-->
+    <style> 
         body {
             padding: 20px;
         }
         .table tbody tr:hover {
-            background-color: #f5f5f5; /* Change the background color as needed */
+            background-color: #f2d4d4; 
         }
     </style>
     <title>Contact List App</title>
 </head>
 <body>
-
+<!-- We see our first div that contains our actual table and buttons-->
 <div class="container">
     <h1>Contact List</h1>
     <button class="btn btn-primary" data-toggle="modal" data-target="#addContactModal">Add Contact</button>
@@ -33,12 +33,12 @@
             </tr>
         </thead>
         <tbody id="contactList">
-            <!-- Contacts will be displayed here -->
+            <!-- This is where we see our contacts -->
         </tbody>
     </table>
 </div>
 
-<!-- Add Contact Modal -->
+<!-- our form for adding contacts -->
 <div class="modal" id="addContactModal">
     <div class="modal-dialog">
         <div class="modal-content">

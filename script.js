@@ -1,21 +1,21 @@
 $(document).ready(function () {
-    // Fetch and display contacts on page load
+    // This is going to be our fetch for our contacts 
     fetchContacts();
 
-    // Handle form submission to add new contact
+    // This is how we add our contacts
     $("#addContactForm").submit(function (event) {
         event.preventDefault();
         addContact();
     });
 
-    // Function to fetch contacts from the API
+    // Our function that fets contacats for our mock API
     function fetchContacts() {
         $.get("https://65b8594446324d531d561e91.mockapi.io/PromineoTechAPI/contacts", function (data) {
             displayContacts(data);
         });
     }
 
-    // Function to display contacts in the table
+    // Our function that will actually display the contacts in the table
     function displayContacts(contacts) {
         var tableBody = $("#contactList");
         tableBody.empty();
@@ -35,7 +35,7 @@ $(document).ready(function () {
         });
     }
 
-    // Function to add a new contact
+    // The function we use to add contacts to the list
     window.addContact = function () {
         var name = $("#name").val();
         var email = $("#email").val();
@@ -45,9 +45,9 @@ $(document).ready(function () {
             $("#addContactModal").modal("hide");
             fetchContacts();
         });
-    }
+    } 
 
-    // Function to delete a contact
+    // Our function in order to delete the contacts
     window.deleteContact = function (id) {
         $.ajax({
             url: "https://65b8594446324d531d561e91.mockapi.io/PromineoTechAPI/contacts/" + id,
@@ -61,21 +61,21 @@ $(document).ready(function () {
         });
     };
 
-    // Function to edit a contact
+    // Our function to edit the contact within the list
     window.editContact = function () {
-        // Assuming you have a modal with id="editContactModal"
+        
         var modal = $("#editContactModal");
 
-        // Fetch the contact details for the given ID
+        // The fetch for contacts with their given ID
         fetch("https://65b8594446324d531d561e91.mockapi.io/PromineoTechAPI/contacts/" + id)
             .then(response => response.json())
             .then(contact => {
-                // Populate the modal form with existing contact details
+                
                 modal.find("#editName").val(contact.name);
                 modal.find("#editEmail").val(contact.email);
                 modal.find("#editPhone").val(contact.phone || "");
 
-                // Show the modal
+                
                 modal.modal("show");
             })
             .catch(error => {
@@ -83,7 +83,7 @@ $(document).ready(function () {
             });
     };
 
-    // Function to update a contact
+    // Our function we created to update a contact
     window.updateContact = function () {
         var modal = $("#editContactModal");
 
@@ -91,16 +91,16 @@ $(document).ready(function () {
         var updatedEmail = modal.find("#editEmail").val();
         var updatedPhone = modal.find("#editPhone").val();
 
-        // Prepare the updated data
+        // Showing updated Data
         var updatedData = {
             name: updatedName,
             email: updatedEmail,
             phone: updatedPhone
         };
 
-        // Make a PUT or PATCH request to update the contact on the server
+        // Our put to the server 
         fetch("https://65b8594446324d531d561e91.mockapi.io/PromineoTechAPI/contacts/" + id, {
-            method: "PUT", // or "PATCH" depending on your API's requirements
+            method: "PUT", 
             headers: {
                 "Content-Type": "application/json"
             },
@@ -110,12 +110,12 @@ $(document).ready(function () {
             if (!response.ok) {
                 throw new Error(`Error updating contact: ${response.statusText}`);
             }
-            return response.json(); // assuming your API returns JSON
+            return response.json(); 
         })
         .then(() => {
-            // Hide the modal after successful update
+         
             modal.modal("hide");
-            // Fetch and display the updated list of contacts
+            //  Our Fetch to display the updated list of contacts
             fetchContacts();
         })
         .catch(error => {
